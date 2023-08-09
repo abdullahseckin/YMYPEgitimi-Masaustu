@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\YMYP Eğitimi\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj": {}
+    "C:\\YMYP Eğitimi\\Masaustu\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj": {}
   },
   "projects": {
-    "C:\\YMYP Eğitimi\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj": {
+    "C:\\YMYP Eğitimi\\Masaustu\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\YMYP Eğitimi\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj",
+        "projectUniqueName": "C:\\YMYP Eğitimi\\Masaustu\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj",
         "projectName": "02.MarketDesktopApp",
-        "projectPath": "C:\\YMYP Eğitimi\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj",
+        "projectPath": "C:\\YMYP Eğitimi\\Masaustu\\02.MarketDesktopApp\\02.MarketDesktopApp.csproj",
         "packagesPath": "C:\\Users\\taner\\.nuget\\packages\\",
-        "outputPath": "C:\\YMYP Eğitimi\\02.MarketDesktopApp\\obj\\",
+        "outputPath": "C:\\YMYP Eğitimi\\Masaustu\\02.MarketDesktopApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\taner\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

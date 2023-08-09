@@ -33,7 +33,7 @@
             groupBox2 = new GroupBox();
             dgList = new DataGridView();
             Count = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
+            ProductName = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             TotalPrice = new DataGridViewTextBoxColumn();
@@ -93,7 +93,7 @@
             dgList.AllowUserToAddRows = false;
             dgList.BackgroundColor = SystemColors.ButtonFace;
             dgList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgList.Columns.AddRange(new DataGridViewColumn[] { Count, Name, Quantity, Price, TotalPrice });
+            dgList.Columns.AddRange(new DataGridViewColumn[] { Count, ProductName, Quantity, Price, TotalPrice });
             dgList.Location = new Point(10, 19);
             dgList.Name = "dgList";
             dgList.RowHeadersVisible = false;
@@ -107,11 +107,11 @@
             Count.HeaderText = "#";
             Count.Name = "Count";
             // 
-            // Name
+            // ProductName
             // 
-            Name.HeaderText = "Name";
-            Name.Name = "Name";
-            Name.Width = 400;
+            ProductName.HeaderText = "Name";
+            ProductName.Name = "ProductName";
+            ProductName.Width = 400;
             // 
             // Quantity
             // 
@@ -213,6 +213,7 @@
             btnComplete.Size = new Size(238, 90);
             btnComplete.TabIndex = 4;
             btnComplete.UseVisualStyleBackColor = true;
+            btnComplete.Click += btnComplete_Click;
             // 
             // btnReset
             // 
@@ -224,6 +225,7 @@
             btnReset.Size = new Size(238, 90);
             btnReset.TabIndex = 3;
             btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // lbRemaing
             // 
@@ -282,10 +284,10 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(5);            
+            Margin = new Padding(5);
+            Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainForm";
-            Load += MainForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -320,7 +322,7 @@
         private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn Count;
-        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn TotalPrice;
