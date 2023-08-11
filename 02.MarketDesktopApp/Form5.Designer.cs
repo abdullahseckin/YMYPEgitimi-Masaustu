@@ -51,6 +51,11 @@
             groupBox2 = new GroupBox();
             txtBarcode = new TextBox();
             groupBox1 = new GroupBox();
+            menuStrip1 = new MenuStrip();
+            raporlarToolStripMenuItem = new ToolStripMenuItem();
+            receiptsToolStripMenuItem = new ToolStripMenuItem();
+            productsToolStripMenuItem = new ToolStripMenuItem();
+            addProductToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgPayment).BeginInit();
             groupBox6.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -59,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)dgList).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // Total
@@ -89,9 +95,9 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(dgPayment);
-            groupBox6.Location = new Point(865, 356);
+            groupBox6.Location = new Point(865, 399);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(489, 184);
+            groupBox6.Size = new Size(489, 141);
             groupBox6.TabIndex = 11;
             groupBox6.TabStop = false;
             // 
@@ -178,7 +184,7 @@
             gbPayment.Controls.Add(btnCash);
             gbPayment.Controls.Add(btnKK);
             gbPayment.Controls.Add(txtPayment);
-            gbPayment.Location = new Point(863, 154);
+            gbPayment.Location = new Point(865, 200);
             gbPayment.Name = "gbPayment";
             gbPayment.Size = new Size(491, 193);
             gbPayment.TabIndex = 9;
@@ -187,7 +193,7 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(lbTotal);
-            groupBox3.Location = new Point(863, 11);
+            groupBox3.Location = new Point(865, 49);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(491, 121);
             groupBox3.TabIndex = 8;
@@ -248,9 +254,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(dgList);
-            groupBox2.Location = new Point(17, 138);
+            groupBox2.Location = new Point(17, 182);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(826, 630);
+            groupBox2.Size = new Size(826, 586);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             // 
@@ -266,11 +272,47 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(txtBarcode);
-            groupBox1.Location = new Point(17, 11);
+            groupBox1.Location = new Point(17, 49);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(826, 121);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { raporlarToolStripMenuItem, productsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1371, 24);
+            menuStrip1.TabIndex = 12;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // raporlarToolStripMenuItem
+            // 
+            raporlarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { receiptsToolStripMenuItem });
+            raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
+            raporlarToolStripMenuItem.Size = new Size(59, 20);
+            raporlarToolStripMenuItem.Text = "Reports";
+            // 
+            // receiptsToolStripMenuItem
+            // 
+            receiptsToolStripMenuItem.Name = "receiptsToolStripMenuItem";
+            receiptsToolStripMenuItem.Size = new Size(180, 22);
+            receiptsToolStripMenuItem.Text = "Receipts";
+            receiptsToolStripMenuItem.Click += receiptsToolStripMenuItem_Click;
+            // 
+            // productsToolStripMenuItem
+            // 
+            productsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addProductToolStripMenuItem });
+            productsToolStripMenuItem.Name = "productsToolStripMenuItem";
+            productsToolStripMenuItem.Size = new Size(66, 20);
+            productsToolStripMenuItem.Text = "Products";
+            // 
+            // addProductToolStripMenuItem
+            // 
+            addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
+            addProductToolStripMenuItem.Size = new Size(180, 22);
+            addProductToolStripMenuItem.Text = "Add Product";
             // 
             // Form5
             // 
@@ -283,10 +325,14 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Controls.Add(menuStrip1);
             Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(5, 5, 5, 5);
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(5);
             Name = "Form5";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form5";
+            Load += Form5_Load;
             ((System.ComponentModel.ISupportInitialize)dgPayment).EndInit();
             groupBox6.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
@@ -297,7 +343,10 @@
             groupBox2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -325,5 +374,10 @@
         private GroupBox groupBox2;
         private TextBox txtBarcode;
         private GroupBox groupBox1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem raporlarToolStripMenuItem;
+        private ToolStripMenuItem receiptsToolStripMenuItem;
+        private ToolStripMenuItem productsToolStripMenuItem;
+        private ToolStripMenuItem addProductToolStripMenuItem;
     }
 }

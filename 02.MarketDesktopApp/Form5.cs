@@ -1,11 +1,12 @@
-﻿using System.Data.SqlClient;
+﻿using _02.MarketDesktopApp.Constants;
+using System.Data.SqlClient;
 
 namespace _02.MarketDesktopApp;
 
 public partial class Form5 : Form
 {
     decimal total = 0;
-    decimal remaining = 0;    
+    decimal remaining = 0;
     List<ReceiptDetail> receiptDetails = new();
     List<ReceiptPayment> receiptPayments = new();
 
@@ -156,7 +157,7 @@ public partial class Form5 : Form
     }
 
     int receiptId = 0;
-    SqlConnection connection = new("Data Source=DESKTOP-3BJ5GK9\\SQLEXPRESS;Initial Catalog=MarketDb;Integrated Security=True;");
+    SqlConnection connection = new(Connection.ConnectionString);
 
     private void btnComplete_Click(object sender, EventArgs e)
     {
@@ -177,7 +178,7 @@ public partial class Form5 : Form
             Guid receiptNumber = Guid.NewGuid();
             string query = "Insert into Receipts(Date,Total,Payment,Remaining,ReceiptNumber) Values(@Date,@Total,@Payment,@Remaining,@ReceipNumber)";
 
-            SqlCommand command = new(query, connection,transaction);
+            SqlCommand command = new(query, connection, transaction);
             command.Parameters.AddWithValue("@Date", DateTime.Now);
             command.Parameters.AddWithValue("@Total", total);
             command.Parameters.AddWithValue("@Payment", total - remaining);
@@ -186,7 +187,7 @@ public partial class Form5 : Form
             command.ExecuteNonQuery();
 
 
-            SqlCommand getIdCommand = new($"Select TOP 1 Id From Receipts Where ReceiptNumber=@receiptNumber", connection,transaction);
+            SqlCommand getIdCommand = new($"Select TOP 1 Id From Receipts Where ReceiptNumber=@receiptNumber", connection, transaction);
             getIdCommand.Parameters.AddWithValue("@receiptNumber", receiptNumber);
             SqlDataReader reader = getIdCommand.ExecuteReader();
             if (!reader.Read())
@@ -237,12 +238,23 @@ public partial class Form5 : Form
             transaction.Rollback();
             MessageBox.Show($"Kayıt esnasında bir hatayla karşılaştık \n{ex.Message}", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        finally 
+        finally
         {
             connection.Close();
         }
 
-        
+
+    }
+
+    private void Form5_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void receiptsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Form6 form6 = new();
+        form6.Show();
     }
 }
 
