@@ -2,14 +2,14 @@
 
 namespace _02.MarketDesktopApp;
 
-public partial class Form1 : Form
+public partial class Form5 : Form
 {
     decimal total = 0;
     decimal remaing = 0;
     List<ReceiptDetail> receiptDetails = new();
-    List<ReceiptPayment> receiptPayments = new();    
+    List<ReceiptPayment> receiptPayments = new();
 
-    public Form1()
+    public Form5()
     {
         InitializeComponent();
     }
@@ -18,7 +18,7 @@ public partial class Form1 : Form
     {
         if (e.KeyChar == 13)
         {
-           
+
             connection.Open();
 
             int id = 0;
@@ -155,12 +155,12 @@ public partial class Form1 : Form
         receiptId = 0;
     }
 
-
     int receiptId = 0;
     SqlConnection connection = new("Data Source=DESKTOP-3BJ5GK9\\SQLEXPRESS;Initial Catalog=MarketDb;Integrated Security=True;");
+
     private void btnComplete_Click(object sender, EventArgs e)
     {
-        if(remaing > 0)
+        if (remaing > 0)
         {
             MessageBox.Show("Tüm ödeme yapılmadı!", "Hata!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
@@ -169,14 +169,14 @@ public partial class Form1 : Form
         connection.Open();
         Guid receiptNumber = Guid.NewGuid();
         string query = $"Insert into Receipts(Id,Date,Total,Payment,Remaining,ReceiptNumber) Values(0,'{DateTime.Now}', {total}, {total - remaing}, {remaing}, '{receiptNumber}')";
-
         //Burada hata var.
-
-        SqlCommand command = new(query,connection);
+        SqlCommand command = new(query, connection);
         command.ExecuteNonQuery();
 
-        SqlCommand getIdCommand = new($"Select TOP 1 Id From Receipts Where ReceiptNumber={receiptNumber}",connection);
+        
+        SqlCommand getIdCommand = new($"Select TOP 1 Id From Receipts Where ReceiptNumber='{receiptNumber}'", connection);
         SqlDataReader reader = getIdCommand.ExecuteReader();
+        reader.Read(); // Bu satırı eklemeyi unutmayın.
         receiptId = (int)reader["Id"];
 
         foreach (var detail in receiptDetails)
@@ -193,13 +193,15 @@ public partial class Form1 : Form
             pametnCommand.ExecuteNonQuery();
         }
 
-        connection.Close();
+        connection.Close();        
+
 
         Clear();
 
         MessageBox.Show("Alış-veriş başarıyla tamamlandı!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 }
+
 
 public class ReceiptDetail
 {
@@ -216,3 +218,4 @@ public class ReceiptPayment
     public string Type { get; set; }
     public decimal Amount { get; set; }
 }
+
