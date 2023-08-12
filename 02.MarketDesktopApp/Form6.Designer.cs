@@ -28,21 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             dgReceipts = new DataGridView();
-            Count = new DataGridViewTextBoxColumn();
-            ReceiptNumber = new DataGridViewTextBoxColumn();
-            Date = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
-            Payment = new DataGridViewTextBoxColumn();
-            Remaining = new DataGridViewTextBoxColumn();
             dgReceiptDetails = new DataGridView();
             RDCount = new DataGridViewTextBoxColumn();
             RDProductName = new DataGridViewTextBoxColumn();
@@ -53,6 +48,14 @@
             RPCount = new DataGridViewTextBoxColumn();
             RPType = new DataGridViewTextBoxColumn();
             RPAmount = new DataGridViewTextBoxColumn();
+            Count = new DataGridViewTextBoxColumn();
+            RId = new DataGridViewTextBoxColumn();
+            ReceiptNumber = new DataGridViewTextBoxColumn();
+            Date = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
+            Payment = new DataGridViewTextBoxColumn();
+            Remaining = new DataGridViewTextBoxColumn();
+            BtnPrint = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgReceipts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgReceiptDetails).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgReceiptPayments).BeginInit();
@@ -65,7 +68,7 @@
             dgReceipts.AllowUserToResizeRows = false;
             dgReceipts.BackgroundColor = SystemColors.ButtonFace;
             dgReceipts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgReceipts.Columns.AddRange(new DataGridViewColumn[] { Count, ReceiptNumber, Date, Total, Payment, Remaining });
+            dgReceipts.Columns.AddRange(new DataGridViewColumn[] { Count, RId, ReceiptNumber, Date, Total, Payment, Remaining, BtnPrint });
             dgReceipts.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgReceipts.Location = new Point(12, 12);
             dgReceipts.Name = "dgReceipts";
@@ -74,55 +77,8 @@
             dgReceipts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgReceipts.Size = new Size(1347, 385);
             dgReceipts.TabIndex = 0;
+            dgReceipts.CellContentClick += dgReceipts_CellContentClick;
             dgReceipts.Click += dgReceipts_Click;
-            // 
-            // Count
-            // 
-            Count.HeaderText = "#";
-            Count.Name = "Count";
-            Count.Width = 50;
-            // 
-            // ReceiptNumber
-            // 
-            ReceiptNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            ReceiptNumber.HeaderText = "ReceiptNumber";
-            ReceiptNumber.Name = "ReceiptNumber";
-            ReceiptNumber.Width = 400;
-            // 
-            // Date
-            // 
-            Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle9.Format = "F";
-            dataGridViewCellStyle9.NullValue = null;
-            Date.DefaultCellStyle = dataGridViewCellStyle9;
-            Date.HeaderText = "Date";
-            Date.Name = "Date";
-            Date.Width = 400;
-            // 
-            // Total
-            // 
-            Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Format = "c2";
-            dataGridViewCellStyle10.NullValue = null;
-            Total.DefaultCellStyle = dataGridViewCellStyle10;
-            Total.HeaderText = "Total";
-            Total.Name = "Total";
-            // 
-            // Payment
-            // 
-            Payment.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Format = "c2";
-            Payment.DefaultCellStyle = dataGridViewCellStyle11;
-            Payment.HeaderText = "Payment";
-            Payment.Name = "Payment";
-            // 
-            // Remaining
-            // 
-            Remaining.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.Format = "c2";
-            Remaining.DefaultCellStyle = dataGridViewCellStyle12;
-            Remaining.HeaderText = "Remaining";
-            Remaining.Name = "Remaining";
             // 
             // dgReceiptDetails
             // 
@@ -153,24 +109,24 @@
             // 
             // RDQuantity
             // 
-            dataGridViewCellStyle13.Format = "c2";
-            RDQuantity.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.Format = "c2";
+            RDQuantity.DefaultCellStyle = dataGridViewCellStyle6;
             RDQuantity.HeaderText = "Quantity";
             RDQuantity.Name = "RDQuantity";
             // 
             // RDPrice
             // 
             RDPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle14.Format = "c2";
-            RDPrice.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.Format = "c2";
+            RDPrice.DefaultCellStyle = dataGridViewCellStyle7;
             RDPrice.HeaderText = "Price";
             RDPrice.Name = "RDPrice";
             // 
             // RDTotal
             // 
             RDTotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle15.Format = "c2";
-            RDTotal.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle8.Format = "c2";
+            RDTotal.DefaultCellStyle = dataGridViewCellStyle8;
             RDTotal.HeaderText = "Total";
             RDTotal.Name = "RDTotal";
             // 
@@ -201,10 +157,75 @@
             // RPAmount
             // 
             RPAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle16.Format = "c2";
-            RPAmount.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle9.Format = "c2";
+            RPAmount.DefaultCellStyle = dataGridViewCellStyle9;
             RPAmount.HeaderText = "Amount";
             RPAmount.Name = "RPAmount";
+            // 
+            // Count
+            // 
+            Count.HeaderText = "#";
+            Count.Name = "Count";
+            Count.Width = 50;
+            // 
+            // RId
+            // 
+            RId.HeaderText = "Id";
+            RId.Name = "RId";
+            RId.Visible = false;
+            // 
+            // ReceiptNumber
+            // 
+            ReceiptNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            ReceiptNumber.HeaderText = "ReceiptNumber";
+            ReceiptNumber.Name = "ReceiptNumber";
+            ReceiptNumber.Width = 400;
+            // 
+            // Date
+            // 
+            Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle1.Format = "F";
+            dataGridViewCellStyle1.NullValue = null;
+            Date.DefaultCellStyle = dataGridViewCellStyle1;
+            Date.HeaderText = "Date";
+            Date.Name = "Date";
+            Date.Width = 400;
+            // 
+            // Total
+            // 
+            Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Format = "c2";
+            dataGridViewCellStyle2.NullValue = null;
+            Total.DefaultCellStyle = dataGridViewCellStyle2;
+            Total.HeaderText = "Total";
+            Total.Name = "Total";
+            // 
+            // Payment
+            // 
+            Payment.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Format = "c2";
+            Payment.DefaultCellStyle = dataGridViewCellStyle3;
+            Payment.HeaderText = "Payment";
+            Payment.Name = "Payment";
+            // 
+            // Remaining
+            // 
+            Remaining.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Format = "c2";
+            Remaining.DefaultCellStyle = dataGridViewCellStyle4;
+            Remaining.HeaderText = "Remaining";
+            Remaining.Name = "Remaining";
+            // 
+            // BtnPrint
+            // 
+            BtnPrint.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = "Print";
+            BtnPrint.DefaultCellStyle = dataGridViewCellStyle5;
+            BtnPrint.HeaderText = "Operations";
+            BtnPrint.Name = "BtnPrint";
+            BtnPrint.Resizable = DataGridViewTriState.True;
+            BtnPrint.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // Form6
             // 
@@ -231,12 +252,6 @@
         private DataGridView dgReceipts;
         private DataGridView dgReceiptDetails;
         private DataGridView dgReceiptPayments;
-        private DataGridViewTextBoxColumn Count;
-        private DataGridViewTextBoxColumn ReceiptNumber;
-        private DataGridViewTextBoxColumn Date;
-        private DataGridViewTextBoxColumn Total;
-        private DataGridViewTextBoxColumn Payment;
-        private DataGridViewTextBoxColumn Remaining;
         private DataGridViewTextBoxColumn RDCount;
         private DataGridViewTextBoxColumn RDProductName;
         private DataGridViewTextBoxColumn RDQuantity;
@@ -245,5 +260,13 @@
         private DataGridViewTextBoxColumn RPCount;
         private DataGridViewTextBoxColumn RPType;
         private DataGridViewTextBoxColumn RPAmount;
+        private DataGridViewTextBoxColumn Count;
+        private DataGridViewTextBoxColumn RId;
+        private DataGridViewTextBoxColumn ReceiptNumber;
+        private DataGridViewTextBoxColumn Date;
+        private DataGridViewTextBoxColumn Total;
+        private DataGridViewTextBoxColumn Payment;
+        private DataGridViewTextBoxColumn Remaining;
+        private DataGridViewButtonColumn BtnPrint;
     }
 }

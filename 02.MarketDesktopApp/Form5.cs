@@ -259,9 +259,9 @@ public partial class Form5 : Form
         
     private void addProductToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        Form7 form7 = new();
+        Form7 form7 = new(this);
         form7.Show();
-        //this.Visible = false;
+        this.Hide();
     }
 }
 
