@@ -28,87 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            groupBox1 = new GroupBox();
-            button2 = new Button();
-            textBox1 = new TextBox();
-            button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            groupBox1.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            dgProducts = new DataGridView();
+            Count = new DataGridViewTextBoxColumn();
+            PName = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            tabPage2 = new TabPage();
+            btnSave = new Button();
+            txtPrice = new TextBox();
+            label2 = new Label();
+            txtName = new TextBox();
+            label1 = new Label();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgProducts).BeginInit();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // tabControl1
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(17, 38);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1171, 640);
-            dataGridView1.TabIndex = 0;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(704, 713);
+            tabControl1.TabIndex = 0;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
-            // groupBox1
+            // tabPage1
             // 
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Location = new Point(30, 62);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1125, 100);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            tabPage1.Controls.Add(dgProducts);
+            tabPage1.Location = new Point(4, 32);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(696, 677);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Products";
+            tabPage1.UseVisualStyleBackColor = true;            
             // 
-            // button2
+            // dgProducts
             // 
-            button2.Location = new Point(276, 40);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 3;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            dgProducts.AllowUserToAddRows = false;
+            dgProducts.AllowUserToResizeRows = false;
+            dgProducts.BackgroundColor = SystemColors.Control;
+            dgProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgProducts.Columns.AddRange(new DataGridViewColumn[] { Count, PName, Price });
+            dgProducts.Dock = DockStyle.Fill;
+            dgProducts.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgProducts.Location = new Point(3, 3);
+            dgProducts.Name = "dgProducts";
+            dgProducts.RowHeadersVisible = false;
+            dgProducts.RowTemplate.Height = 25;
+            dgProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgProducts.Size = new Size(690, 671);
+            dgProducts.TabIndex = 0;
             // 
-            // textBox1
+            // Count
             // 
-            textBox1.Location = new Point(21, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(223, 32);
-            textBox1.TabIndex = 0;
+            Count.HeaderText = "#";
+            Count.Name = "Count";
             // 
-            // button1
+            // PName
             // 
-            button1.Location = new Point(28, 9);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            PName.HeaderText = "Name";
+            PName.Name = "PName";
+            PName.Width = 400;
+            // 
+            // Price
+            // 
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Format = "c2";
+            Price.DefaultCellStyle = dataGridViewCellStyle1;
+            Price.HeaderText = "Price";
+            Price.Name = "Price";
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(btnSave);
+            tabPage2.Controls.Add(txtPrice);
+            tabPage2.Controls.Add(label2);
+            tabPage2.Controls.Add(txtName);
+            tabPage2.Controls.Add(label1);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(696, 685);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Product Add";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(216, 210);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(283, 42);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // txtPrice
+            // 
+            txtPrice.Location = new Point(215, 145);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(284, 32);
+            txtPrice.TabIndex = 3;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(314, 108);
+            label2.Name = "label2";
+            label2.Size = new Size(53, 23);
+            label2.TabIndex = 2;
+            label2.Text = "Price";
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(210, 53);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(289, 32);
+            txtName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(314, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 23);
+            label1.TabIndex = 0;
+            label1.Text = "Name";
             // 
             // Form7
             // 
             AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 690);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(704, 713);
+            Controls.Add(tabControl1);
             Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(5);
             Name = "Form7";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form7";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Load += Form7_Load;
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgProducts).EndInit();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private GroupBox groupBox1;
-        private Button button2;
-        private TextBox textBox1;
-        private Button button1;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private DataGridView dgProducts;
+        private TabPage tabPage2;
+        private DataGridViewTextBoxColumn Count;
+        private DataGridViewTextBoxColumn PName;
+        private DataGridViewTextBoxColumn Price;
+        private Button btnSave;
+        private TextBox txtPrice;
+        private Label label2;
+        private TextBox txtName;
+        private Label label1;
     }
 }

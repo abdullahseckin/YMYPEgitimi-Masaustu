@@ -297,7 +297,7 @@
             // receiptsToolStripMenuItem
             // 
             receiptsToolStripMenuItem.Name = "receiptsToolStripMenuItem";
-            receiptsToolStripMenuItem.Size = new Size(180, 22);
+            receiptsToolStripMenuItem.Size = new Size(118, 22);
             receiptsToolStripMenuItem.Text = "Receipts";
             receiptsToolStripMenuItem.Click += receiptsToolStripMenuItem_Click;
             // 
@@ -312,7 +312,8 @@
             // 
             addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
             addProductToolStripMenuItem.Size = new Size(180, 22);
-            addProductToolStripMenuItem.Text = "Add Product";
+            addProductToolStripMenuItem.Text = "Products";
+            addProductToolStripMenuItem.Click += addProductToolStripMenuItem_Click;
             // 
             // Form5
             // 

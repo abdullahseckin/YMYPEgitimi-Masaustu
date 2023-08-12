@@ -1,32 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using _02.MarketDesktopApp.Constants;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace _02.MarketDesktopApp
+namespace _02.MarketDesktopApp;
+
+public partial class Form7 : Form
 {
-    public partial class Form7 : Form
+    string connectionString = Connection.ConnectionString;
+    SqlConnection connection;
+    public Form7()
     {
-        public Form7()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        connection = new(connectionString);
+    }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Height = 510;
-            dataGridView1.Location = new Point(dataGridView1.Location.X, 168);
-        }
+    private void Form7_Load(object sender, EventArgs e)
+    {
+        GetAllProduct();
+    }
 
-        private void button2_Click(object sender, EventArgs e)
+    private void GetAllProduct()
+    {
+        dgProducts.Rows.Clear();
+
+        connection.Open();
+        string query = "Select * From Products Order by Name";
+        SqlCommand cmd = new(query, connection);
+        SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
         {
-            dataGridView1.Height = 640;
-            dataGridView1.Location = new Point(dataGridView1.Location.X, 38);
+            dgProducts.Rows.Add();
+            int count = dgProducts.RowCount - 1;
+
+            dgProducts.Rows[count].Cells["Count"].Value = count + 1;
+            dgProducts.Rows[count].Cells["PName"].Value = reader["Name"];
+            dgProducts.Rows[count].Cells["Price"].Value = reader["Price"];
+        }
+        connection.Close();
+    }
+
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+        string name = txtName.Text;
+        decimal price = Convert.ToDecimal(txtPrice.Text);
+
+        connection.Open();
+        string query = "Insert into Products Values(@Name,@Price)";
+        SqlCommand cmd = new(query, connection);
+        cmd.Parameters.AddWithValue("@Name", name);
+        cmd.Parameters.AddWithValue("@Price", price);
+        cmd.ExecuteNonQuery();
+
+        connection.Close();
+
+        MessageBox.Show("Product save is successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        txtName.Text = "";
+        txtPrice.Text = "0";
+        txtName.Focus();
+    }    
+
+    private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string value = tabControl1.SelectedTab.Text;
+        if(value == "Products")
+        {
+            GetAllProduct();
         }
     }
 }

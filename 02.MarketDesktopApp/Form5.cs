@@ -256,6 +256,13 @@ public partial class Form5 : Form
         Form6 form6 = new();
         form6.Show();
     }
+        
+    private void addProductToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Form7 form7 = new();
+        form7.Show();
+        //this.Visible = false;
+    }
 }
 
 

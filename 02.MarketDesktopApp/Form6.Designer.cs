@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
             dgReceipts = new DataGridView();
             Count = new DataGridViewTextBoxColumn();
             ReceiptNumber = new DataGridViewTextBoxColumn();
@@ -48,10 +49,13 @@
             RDQuantity = new DataGridViewTextBoxColumn();
             RDPrice = new DataGridViewTextBoxColumn();
             RDTotal = new DataGridViewTextBoxColumn();
-            dataGridView3 = new DataGridView();
+            dgReceiptPayments = new DataGridView();
+            RPCount = new DataGridViewTextBoxColumn();
+            RPType = new DataGridViewTextBoxColumn();
+            RPAmount = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgReceipts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgReceiptDetails).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgReceiptPayments).BeginInit();
             SuspendLayout();
             // 
             // dgReceipts
@@ -88,9 +92,9 @@
             // Date
             // 
             Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.Format = "F";
-            dataGridViewCellStyle1.NullValue = null;
-            Date.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Format = "F";
+            dataGridViewCellStyle9.NullValue = null;
+            Date.DefaultCellStyle = dataGridViewCellStyle9;
             Date.HeaderText = "Date";
             Date.Name = "Date";
             Date.Width = 400;
@@ -98,25 +102,25 @@
             // Total
             // 
             Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Format = "c2";
-            dataGridViewCellStyle2.NullValue = null;
-            Total.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "c2";
+            dataGridViewCellStyle10.NullValue = null;
+            Total.DefaultCellStyle = dataGridViewCellStyle10;
             Total.HeaderText = "Total";
             Total.Name = "Total";
             // 
             // Payment
             // 
             Payment.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Format = "c2";
-            Payment.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Format = "c2";
+            Payment.DefaultCellStyle = dataGridViewCellStyle11;
             Payment.HeaderText = "Payment";
             Payment.Name = "Payment";
             // 
             // Remaining
             // 
             Remaining.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Format = "c2";
-            Remaining.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Format = "c2";
+            Remaining.DefaultCellStyle = dataGridViewCellStyle12;
             Remaining.HeaderText = "Remaining";
             Remaining.Name = "Remaining";
             // 
@@ -134,7 +138,7 @@
             dgReceiptDetails.RowTemplate.Height = 25;
             dgReceiptDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgReceiptDetails.Size = new Size(786, 350);
-            dgReceiptDetails.TabIndex = 1;            
+            dgReceiptDetails.TabIndex = 1;
             // 
             // RDCount
             // 
@@ -149,45 +153,65 @@
             // 
             // RDQuantity
             // 
-            dataGridViewCellStyle5.Format = "c2";
-            RDQuantity.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Format = "c2";
+            RDQuantity.DefaultCellStyle = dataGridViewCellStyle13;
             RDQuantity.HeaderText = "Quantity";
             RDQuantity.Name = "RDQuantity";
             // 
             // RDPrice
             // 
             RDPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Format = "c2";
-            RDPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Format = "c2";
+            RDPrice.DefaultCellStyle = dataGridViewCellStyle14;
             RDPrice.HeaderText = "Price";
             RDPrice.Name = "RDPrice";
             // 
             // RDTotal
             // 
             RDTotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Format = "c2";
-            RDTotal.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Format = "c2";
+            RDTotal.DefaultCellStyle = dataGridViewCellStyle15;
             RDTotal.HeaderText = "Total";
             RDTotal.Name = "RDTotal";
             // 
-            // dataGridView3
+            // dgReceiptPayments
             // 
-            dataGridView3.AllowUserToAddRows = false;
-            dataGridView3.BackgroundColor = SystemColors.ButtonFace;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(808, 417);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersVisible = false;
-            dataGridView3.RowTemplate.Height = 25;
-            dataGridView3.Size = new Size(541, 350);
-            dataGridView3.TabIndex = 2;
+            dgReceiptPayments.AllowUserToAddRows = false;
+            dgReceiptPayments.BackgroundColor = SystemColors.ButtonFace;
+            dgReceiptPayments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgReceiptPayments.Columns.AddRange(new DataGridViewColumn[] { RPCount, RPType, RPAmount });
+            dgReceiptPayments.Location = new Point(808, 417);
+            dgReceiptPayments.Name = "dgReceiptPayments";
+            dgReceiptPayments.RowHeadersVisible = false;
+            dgReceiptPayments.RowTemplate.Height = 25;
+            dgReceiptPayments.Size = new Size(541, 350);
+            dgReceiptPayments.TabIndex = 2;
+            // 
+            // RPCount
+            // 
+            RPCount.HeaderText = "#";
+            RPCount.Name = "RPCount";
+            // 
+            // RPType
+            // 
+            RPType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RPType.HeaderText = "Type";
+            RPType.Name = "RPType";
+            // 
+            // RPAmount
+            // 
+            RPAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle16.Format = "c2";
+            RPAmount.DefaultCellStyle = dataGridViewCellStyle16;
+            RPAmount.HeaderText = "Amount";
+            RPAmount.Name = "RPAmount";
             // 
             // Form6
             // 
             AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1371, 779);
-            Controls.Add(dataGridView3);
+            Controls.Add(dgReceiptPayments);
             Controls.Add(dgReceiptDetails);
             Controls.Add(dgReceipts);
             Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -198,7 +222,7 @@
             Load += Form6_Load;
             ((System.ComponentModel.ISupportInitialize)dgReceipts).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgReceiptDetails).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgReceiptPayments).EndInit();
             ResumeLayout(false);
         }
 
@@ -206,7 +230,7 @@
 
         private DataGridView dgReceipts;
         private DataGridView dgReceiptDetails;
-        private DataGridView dataGridView3;
+        private DataGridView dgReceiptPayments;
         private DataGridViewTextBoxColumn Count;
         private DataGridViewTextBoxColumn ReceiptNumber;
         private DataGridViewTextBoxColumn Date;
@@ -218,5 +242,8 @@
         private DataGridViewTextBoxColumn RDQuantity;
         private DataGridViewTextBoxColumn RDPrice;
         private DataGridViewTextBoxColumn RDTotal;
+        private DataGridViewTextBoxColumn RPCount;
+        private DataGridViewTextBoxColumn RPType;
+        private DataGridViewTextBoxColumn RPAmount;
     }
 }

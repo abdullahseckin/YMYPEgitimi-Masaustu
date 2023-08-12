@@ -59,33 +59,52 @@ public partial class Form6 : Form
                 int receiptId = (int)receiptReader["Id"];
 
                 receiptReader.Close();
-
-                SqlCommand receiptDetailsCmd = new("select p.Name as Name, rd.Quantity as Quantity, rd.Price as Price, rd.Total as Total from ReceiptDetails as rd Left Join Products as p on rd.ProductId = p.Id where ReceiptId =@ReceiptId", connection);
-                receiptDetailsCmd.Parameters.AddWithValue("@ReceiptId", receiptId);
-
-                SqlDataReader receiptDetailReader = receiptDetailsCmd.ExecuteReader();
-                if (receiptDetailReader.Read())
-                {
-                    while (receiptDetailReader.Read())
-                    {
-                        dgReceiptDetails.Rows.Add();
-                        int dgRDCount = dgReceiptDetails.Rows.Count - 1;
-
-                        dgReceiptDetails.Rows[dgRDCount].Cells["RDCount"].Value = dgRDCount + 1;
-                        dgReceiptDetails.Rows[dgRDCount].Cells["RDProductName"].Value = receiptDetailReader["Name"];
-                        dgReceiptDetails.Rows[dgRDCount].Cells["RDQuantity"].Value = receiptDetailReader["Quantity"];
-                        dgReceiptDetails.Rows[dgRDCount].Cells["RDPrice"].Value = receiptDetailReader["Price"];
-                        dgReceiptDetails.Rows[dgRDCount].Cells["RDTotal"].Value = receiptDetailReader["Total"];
-                    }
-
-                    receiptDetailReader.Close();
-                }
-
+                GetReceiptDetails(receiptId);
+                GetReceiptPayments(receiptId);
             }
 
-            dgReceiptDetails.ClearSelection();
-
             connection.Close();
-        }        
+        }
+    }
+
+    private void GetReceiptPayments(int receiptId)
+    {
+        SqlCommand receiptPaymentCmd = new("Select * From ReceiptPayments Where ReceiptId=@ReceiptId", connection);
+        receiptPaymentCmd.Parameters.AddWithValue("@ReceiptId", receiptId);
+        SqlDataReader receiptPaymentReader = receiptPaymentCmd.ExecuteReader();
+        dgReceiptPayments.Rows.Clear();
+        while (receiptPaymentReader.Read())
+        {
+            dgReceiptPayments.Rows.Add();
+            int dgReceiptPaymentsCount = dgReceiptPayments.Rows.Count - 1;
+
+            dgReceiptPayments.Rows[dgReceiptPaymentsCount].Cells["RPCount"].Value = dgReceiptPaymentsCount + 1;
+            dgReceiptPayments.Rows[dgReceiptPaymentsCount].Cells["RPType"].Value = receiptPaymentReader["Type"];
+            dgReceiptPayments.Rows[dgReceiptPaymentsCount].Cells["RPAmount"].Value = receiptPaymentReader["Amount"];
+        }
+        dgReceiptPayments.ClearSelection();
+        receiptPaymentReader.Close();
+    }
+
+    private void GetReceiptDetails(int receiptId)
+    {
+        SqlCommand receiptDetailsCmd = new("select p.Name as Name, rd.Quantity as Quantity, rd.Price as Price, rd.Total as Total from ReceiptDetails as rd Left Join Products as p on rd.ProductId = p.Id where ReceiptId =@ReceiptId", connection);
+        receiptDetailsCmd.Parameters.AddWithValue("@ReceiptId", receiptId);
+
+        SqlDataReader receiptDetailReader = receiptDetailsCmd.ExecuteReader();
+        while (receiptDetailReader.Read())
+        {
+            dgReceiptDetails.Rows.Add();
+            int dgRDCount = dgReceiptDetails.Rows.Count - 1;
+
+            dgReceiptDetails.Rows[dgRDCount].Cells["RDCount"].Value = dgRDCount + 1;
+            dgReceiptDetails.Rows[dgRDCount].Cells["RDProductName"].Value = receiptDetailReader["Name"];
+            dgReceiptDetails.Rows[dgRDCount].Cells["RDQuantity"].Value = receiptDetailReader["Quantity"];
+            dgReceiptDetails.Rows[dgRDCount].Cells["RDPrice"].Value = receiptDetailReader["Price"];
+            dgReceiptDetails.Rows[dgRDCount].Cells["RDTotal"].Value = receiptDetailReader["Total"];
+        }
+
+        receiptDetailReader.Close();
+        dgReceiptDetails.ClearSelection();
     }
 }
